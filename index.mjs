@@ -8,6 +8,7 @@ const app = express()
 app.get('/*.js', function(req, res) {
   const srcFile = req.url.replace('.js', '.el')
   const src = fs.readFileSync(path.resolve('.' + srcFile), 'utf-8')
+  console.log(src)
   parser(src, (err, code) => {
     if (err) {
       return res.send(err)
